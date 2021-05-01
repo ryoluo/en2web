@@ -59,7 +59,7 @@ const routes = [
   {
     path: '/password/reset/:token',
     component: PasswordReset,
-    name: 'password.remind',
+    name: 'password.reset',
     meta: {
       requireAuth: false,
       title: 'Password Reset',

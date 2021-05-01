@@ -17,7 +17,7 @@
       </v-col>
     </v-row>
     <v-row align="center" justify="center">
-      <v-col cols="11" md="8" lg="5" class="pt-0">
+      <v-col cols="10" class="pa-0" style="max-width:400px;">
         <validation-observer v-slot="{ passes }" slim>
           <v-form>
             <v-col cols="12" class="pa-0">
@@ -51,6 +51,7 @@
                   required
                 />
               </validation-provider>
+              <v-checkbox v-model="remember" label="自動ログイン" color="indigo lighten-1" />
               <v-col cols="12" class="mt-9 pa-0 d-flex">
                 <v-btn
                   class="white--text mr-8"

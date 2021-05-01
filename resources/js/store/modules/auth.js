@@ -9,12 +9,7 @@ const actions = {
   async login({ commit, dispatch }, payload) {
     await axios
       .post('/login', payload)
-      .then(async res => {
-        localStorage.setItem('access_token', res.data.access_token);
-        localStorage.setItem(
-          'expired_at',
-          new Date().setSeconds(res.data.expires_in),
-        );
+      .then(async () => {
         await dispatch('me');
         commit('authenticated');
         router.push('/notes');
@@ -43,22 +38,24 @@ const actions = {
         );
       });
   },
-  async refresh({ commit, dispatch }) {
+  async check({ commit, dispatch }) {
     await axios
-      .post('/refresh', {})
+      .get('/check')
       .then(async res => {
-        localStorage.setItem('access_token', res.data.access_token);
-        localStorage.setItem(
-          'expired_at',
-          new Date().setSeconds(res.data.expires_in),
-        );
-        await dispatch('me');
-        commit('authenticated');
+        if (res.data.isLoggedIn) {
+          await dispatch('me');
+          commit('authenticated');
+        } else {
+          commit('unauthenticated');
+        }
       })
       .catch(() => {
+        dispatch(
+          'snackbar/show',
+          { message: 'エラーが発生しました', type: 'error' },
+          { root: true },
+        );
         commit('unauthenticated');
-        commit('setUser', null);
-        localStorage.removeItem('access_token', 'expired_at');
       });
   },
   async me({ commit }) {
@@ -76,7 +73,6 @@ const actions = {
     await axios.post('/logout').finally(() => {
       commit('unauthenticated');
       commit('setUser', null);
-      localStorage.removeItem('access_token');
       router.push('/login');
       dispatch(
         'snackbar/show',
@@ -84,6 +80,15 @@ const actions = {
         { root: true },
       );
     });
+  },
+  sessionExpired({ commit, dispatch }) {
+    dispatch(
+      'snackbar/show',
+      { message: 'セッションがタイムアウトしました', type: 'error' },
+      { root: true },
+    );
+    commit('setUser', null);
+    commit('unauthenticated');
   },
   async remind({ dispatch }, payload) {
     let ok = true;

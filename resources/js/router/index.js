@@ -21,20 +21,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  // localStorageを元に再ログイン処理
-  if (!store.state.auth.isAuth) {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      await store.dispatch('auth/refresh');
-    }
-  } else {
-    const expiredAt = localStorage.getItem('expired_at');
-    if (expiredAt && expiredAt < new Date()) {
-      await store.dispatch('auth/refresh');
-    }
+  // 再ログイン処理
+  if (!from.name && !store.state.auth.isAuth) {
+    await store.dispatch('auth/check');
   }
-  store.state.referrer = from.name;
-  // Auth middleware
   if (to.meta.requireAuth && !store.state.auth.isAuth) {
     next('/login');
   }
@@ -42,6 +32,7 @@ router.beforeEach(async (to, from, next) => {
   if (!to.meta.requireAuth && store.state.auth.isAuth) {
     next('/notes');
   }
+  store.state.referrer = from.name;
   next();
 });
 

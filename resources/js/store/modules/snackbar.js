@@ -33,7 +33,6 @@ const mutations = {
     if (state.key === key) {
       state.isActive = false;
       state.message = '';
-      state.type = 'success';
     }
   },
 };

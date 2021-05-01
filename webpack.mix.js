@@ -14,10 +14,6 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
  */
 
 mix.options({
-  hmrOptions: {
-    host: '192.168.150.107',
-    port: '8080',
-  },
   postCss: [require('autoprefixer')],
 });
 

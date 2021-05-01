@@ -2,14 +2,13 @@
 
 namespace App;
 
-use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Facades\Slack;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
@@ -32,29 +31,9 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
-    public function __construct($attributes = []) 
+    public function __construct($attributes = [])
     {
         parent::__construct($attributes);
-    }
-
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims()
-    {
-        return [];
     }
 
     public function sendPasswordResetNotification($token)
@@ -102,7 +81,7 @@ class User extends Authenticatable implements JWTSubject
         $urlPattern = '/(http|https):\/\/([A-Z0-9][A-Z0-9_-]*(?:[\.\/][\?%#A-Z0-9][\?&%;=#A-Z0-9_-]*)+):?(\d+)?\/?/i';
         $replacement = '<a class="escaped_link" href="$0" target="_blank">$0</a>';
         $escapedString = preg_replace($urlPattern, $replacement, $escapedString);
-        return $escapedString;        
+        return $escapedString;
     }
 
     /**
@@ -139,7 +118,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function fetchSlackProfile()
     {
-        if(!$this->slack_id) {
+        if (!$this->slack_id) {
             return null;
         }
         $res = Slack::fetchUserProfile($this->slack_id);
