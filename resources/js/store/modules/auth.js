@@ -81,15 +81,6 @@ const actions = {
       );
     });
   },
-  sessionExpired({ commit, dispatch }) {
-    dispatch(
-      'snackbar/show',
-      { message: 'セッションがタイムアウトしました', type: 'error' },
-      { root: true },
-    );
-    commit('setUser', null);
-    commit('unauthenticated');
-  },
   async remind({ dispatch }, payload) {
     let ok = true;
     await axios.post('/reset', payload).catch(() => {
