@@ -80,16 +80,6 @@ export default {
           link: '/users',
           icon: 'mdi-account-multiple',
         },
-        {
-          name: 'Attendance',
-          link: '/attendances',
-          icon: 'mdi-clipboard-check-outline',
-        },
-        // {
-        //   name: 'Countries',
-        //   link: '/countries',
-        //   icon: 'mdi-earth',
-        // },
       ];
     },
   },

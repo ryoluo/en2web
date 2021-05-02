@@ -1,11 +1,7 @@
-/* eslint-disable no-unused-vars */
 import Vue from 'vue';
 
 import axios from './axios';
 Vue.prototype.$http = axios;
-
-import Vue2TouchEvents from 'vue2-touch-events';
-Vue.use(Vue2TouchEvents);
 
 import router from './router';
 import store from './store';

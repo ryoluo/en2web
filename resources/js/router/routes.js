@@ -7,12 +7,10 @@ import NoteUsers from '@/js/pages/notes/users.vue';
 import NoteSearch from '@/js/pages/notes/search.vue';
 import Users from '@/js/pages/users/index.vue';
 import UserView from '@/js/pages/users/view.vue';
-import Attendances from '@/js/pages/attendances/index.vue';
 import Settings from '@/js/pages/settings/index.vue';
 import SettingProfile from '@/js/pages/settings/profile.vue';
 import SettingIcon from '@/js/pages/settings/icon.vue';
 import SettingCover from '@/js/pages/settings/cover.vue';
-import ComingSoon from '@/js/pages/comingsoon.vue';
 import RegisterVefiry from '@/js/pages/register/verify.vue';
 import PasswordRemind from '@/js/pages/password/reset/index.vue';
 import PasswordReset from '@/js/pages/password/reset/form.vue';
@@ -233,28 +231,6 @@ const routes = [
     meta: {
       requireAuth: true,
       title: 'Users',
-      header: 'menu',
-      actions: [],
-    },
-  },
-  {
-    path: '/attendances',
-    component: Attendances,
-    name: 'attendances',
-    meta: {
-      requireAuth: true,
-      title: 'Attendance',
-      header: 'menu',
-      actions: [],
-    },
-  },
-  {
-    path: '/countries',
-    component: ComingSoon,
-    name: 'countries',
-    meta: {
-      requireAuth: true,
-      title: 'Attendance',
       header: 'menu',
       actions: [],
     },
