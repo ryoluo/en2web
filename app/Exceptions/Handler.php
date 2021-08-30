@@ -38,23 +38,4 @@ class Handler extends ExceptionHandler
     {
         parent::report($e);
     }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $e
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Throwable $e)
-    {
-        if ($request->ajax() || $request->is('api/*')) {
-            $status = $this->isHttpException($e) ? $e->getStatusCode() : 500;
-            return response()->json([
-                'status' => $status,
-                'errors' => $e->getMessage()
-            ], $status);
-        }
-        return parent::render($request, $e);
-    }
 }
