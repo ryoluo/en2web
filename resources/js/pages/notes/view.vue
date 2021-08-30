@@ -84,13 +84,13 @@
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <router-link
+      <div
         class="d-inline-block ml-4 mt-2 mb-0 font-weight-medium subtitle-2 blue-grey--text"
         style="font-size: 18px; text-decoration: none;"
         :to="`/notes/${$route.params.id}/users`"
       >
         {{ note.fav_users_count + ajustFavCount }} liked users
-      </router-link>
+      </div>
 
       <div
         class="content blue-grey--text text--darken-4 mt-5 mb-8"

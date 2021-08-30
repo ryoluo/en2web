@@ -3,7 +3,7 @@ import Notes from '@/js/pages/notes/index.vue';
 import NoteView from '@/js/pages/notes/view.vue';
 import NoteForm from '@/js/pages/notes/form.vue';
 import NoteDelete from '@/js/pages/notes/delete.vue';
-import NoteUsers from '@/js/pages/notes/users.vue';
+// import NoteUsers from '@/js/pages/notes/users.vue';
 import NoteSearch from '@/js/pages/notes/search.vue';
 import Users from '@/js/pages/users/index.vue';
 import UserView from '@/js/pages/users/view.vue';
@@ -191,17 +191,17 @@ const routes = [
       actions: [],
     },
   },
-  {
-    path: '/notes/:id(\\d+)/users',
-    component: NoteUsers,
-    name: 'note.user',
-    meta: {
-      requireAuth: true,
-      title: 'Liked Users',
-      header: 'back',
-      actions: noteActions,
-    },
-  },
+  // {
+  //   path: '/notes/:id(\\d+)/users',
+  //   component: NoteUsers,
+  //   name: 'note.user',
+  //   meta: {
+  //     requireAuth: true,
+  //     title: 'Liked Users',
+  //     header: 'back',
+  //     actions: noteActions,
+  //   },
+  // },
   {
     path: '/notes/search',
     component: NoteSearch,
