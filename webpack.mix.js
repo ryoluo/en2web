@@ -21,6 +21,7 @@ const webpackConfigVuetify = class {
   webpackConfig(config) {
     config.plugins.push(new VuetifyLoaderPlugin());
     config.resolve.alias['@'] = path.resolve(__dirname, 'resources');
+    config.stats.warnings = false;
   }
 };
 mix.extend('vuetify', new webpackConfigVuetify());
