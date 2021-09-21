@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/redirect/slack', 'OAuthController@redirect');
+Route::get('/login/slack', 'OAuthController@login');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('/login', 'Api\Auth\LoginController@login');

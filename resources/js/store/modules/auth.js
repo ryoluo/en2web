@@ -45,6 +45,11 @@ const actions = {
         if (res.data.isLoggedIn) {
           await dispatch('me');
           commit('authenticated');
+          dispatch(
+            'snackbar/show',
+            { message: 'ログインしました' },
+            { root: true },
+          );
         } else {
           commit('unauthenticated');
         }
