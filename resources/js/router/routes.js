@@ -1,4 +1,5 @@
 import Login from '@/js/pages/login/index.vue';
+import SlackError from '@/js/pages/error/slack.vue';
 import Notes from '@/js/pages/notes/index.vue';
 import NoteView from '@/js/pages/notes/view.vue';
 import NoteForm from '@/js/pages/notes/form.vue';
@@ -61,6 +62,17 @@ const routes = [
     meta: {
       requireAuth: false,
       title: 'Password Reset',
+      header: 'menu',
+      actions: [],
+    },
+  },
+  {
+    path: '/error/slack',
+    component: SlackError,
+    name: 'error.slack',
+    meta: {
+      requireAuth: false,
+      title: 'Error',
       header: 'menu',
       actions: [],
     },

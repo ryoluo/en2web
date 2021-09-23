@@ -9,6 +9,7 @@ class OAuthController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('guest');
         $this->client_id = config('const.SLACK_CLIENT_ID');
         $this->client_secret = config('const.SLACK_CLIENT_SECRET');
         $this->redirect_uri = app()->isLocal()
@@ -64,9 +65,9 @@ class OAuthController extends Controller
         $slack_id = $payload->{'https://slack.com/user_id'};
         $user = User::where('slack_id', $slack_id)->first();
         if (!$user) {
-            return dd('En2::Webに未登録もしくはEn2:WebアカウントとSlackアカウントが未連携です。');
+            return redirect('/error/slack');
         }
-        Auth::login($user);
+        Auth::login($user, true);
         return view('app');
     }
 

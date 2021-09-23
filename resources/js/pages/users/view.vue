@@ -107,7 +107,7 @@
         </v-list>
         <div
           v-if="user.escaped_profile"
-          class="profile mt-3 mx-auto"
+          class="profile mt-3 mx-auto pb-12"
           v-html="user.escaped_profile"
         />
         <IconMessage

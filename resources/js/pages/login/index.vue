@@ -54,7 +54,7 @@
               <v-row style="max-width:400px;" class="mt-4 ma-auto">
                 <v-col cols="4" class="pa-0 d-flex">
                   <v-btn
-                    class="white--text mr-8 mt-auto mb-auto"
+                    class="white--text mt-auto mb-auto"
                     :loading="loading"
                     :disabled="loading"
                     color="indigo lighten-1"
@@ -64,7 +64,7 @@
                     Sign in
                   </v-btn>
                 </v-col>
-                <v-col cols="" class="pa-0 d-flex">
+                <v-col class="ml-2 pa-0 d-flex">
                   <v-checkbox v-model="remember" label="自動ログイン" color="indigo lighten-1" />
                 </v-col>
               </v-row>
