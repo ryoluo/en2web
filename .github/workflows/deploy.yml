@@ -2,33 +2,32 @@ name: Automatic Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
-    
     runs-on: ubuntu-latest
-    
+
     env:
       SSH_SECRET: ${{ secrets.SSH_SECRET }}
       SSH_USER: ${{ secrets.SSH_USER }}
       SSH_ADDR: ${{ secrets.SSH_ADDR }}
-   
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: SSH Deploy
         run: |
           echo "$SSH_SECRET" > secret_key
-          ssh-keyscan -H ${SSH_ADDR} > known_hosts
+          ssh-keyscan -p ${SSH_PORT} -H ${SSH_ADDR} > known_hosts
           chmod 600 secret_key
-          ssh ${SSH_USER}@${SSH_ADDR} -o UserKnownHostsFile=./known_hosts -i ./secret_key \
-              "cd ~/www/en2web && \
+          ssh ${SSH_USER}@${SSH_ADDR} -p ${SSH_PORT} -o UserKnownHostsFile=./known_hosts -i ./secret_key \
+              "cd ~/repos/en2web && \
                git checkout . && \
                git pull && \
                composer install && \
                php artisan config:cache && \
                php artisan migrate --force && \
-               export NODE_OPTIONS="--max-old-space-size=512" && \
                npm install && \
                npm run prod"
