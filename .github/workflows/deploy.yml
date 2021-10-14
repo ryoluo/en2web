@@ -31,4 +31,4 @@ jobs:
                php artisan migrate --force && \
                . ~/.nvm/nvm.sh && \
                nvm exec 14.17.6 npm install && \
-               nvm exec 14.17.6 npm run generate"
+               nvm exec 14.17.6 npm run prod"
