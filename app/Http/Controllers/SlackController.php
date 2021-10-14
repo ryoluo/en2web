@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
 
 use App\User;
 
@@ -17,20 +15,19 @@ class SlackController extends Controller
 
     public function command()
     {
-        if($this->verifyToken(request('token'))) {
+        if ($this->verifyToken(request('token'))) {
             $args = preg_split('/[[:blank:]]/', request('text'));
-            switch($args[0]){
+            switch ($args[0]) {
                 case self::COMMAND_IAM:
                     return $this->iam(request('user_id'));
                 case self::COMMAND_REGISTER:
-                    Log::debug(request()->all());
                     return $this->register(request('user_id'));
                 default:
                     return $this->help();
             }
         } else {
             return response()->json(
-                ['error' => 'token invalid'], 
+                ['error' => 'token invalid'],
                 Response::HTTP_UNAUTHORIZED
             );
         }
@@ -63,7 +60,8 @@ class SlackController extends Controller
         return response()->json(['text' => $message]);
     }
 
-    private function help() {
+    private function help()
+    {
         $texts = [
             "[Command List]",
             "iam",
@@ -79,17 +77,17 @@ class SlackController extends Controller
     public function response()
     {
         if ($this->verifyToken(request('token'))) {
-            switch(request('type')) {
+            switch (request('type')) {
                 case self::URL_VERIFICATION:
                     return response()->json(
-                        ['challenge' =>request('challenge')]
+                        ['challenge' => request('challenge')]
                     );
                 default:
                     return 'piyopiyo';
             }
         } else {
             return response()->json(
-                ['error' => 'token invalid'], 
+                ['error' => 'token invalid'],
                 Response::HTTP_UNAUTHORIZED
             );
         }

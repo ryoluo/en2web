@@ -1,18 +1,17 @@
 import Login from '@/js/pages/login/index.vue';
+import SlackError from '@/js/pages/error/slack.vue';
 import Notes from '@/js/pages/notes/index.vue';
 import NoteView from '@/js/pages/notes/view.vue';
 import NoteForm from '@/js/pages/notes/form.vue';
 import NoteDelete from '@/js/pages/notes/delete.vue';
-import NoteUsers from '@/js/pages/notes/users.vue';
+// import NoteUsers from '@/js/pages/notes/users.vue';
 import NoteSearch from '@/js/pages/notes/search.vue';
 import Users from '@/js/pages/users/index.vue';
 import UserView from '@/js/pages/users/view.vue';
-import Attendances from '@/js/pages/attendances/index.vue';
 import Settings from '@/js/pages/settings/index.vue';
 import SettingProfile from '@/js/pages/settings/profile.vue';
 import SettingIcon from '@/js/pages/settings/icon.vue';
 import SettingCover from '@/js/pages/settings/cover.vue';
-import ComingSoon from '@/js/pages/comingsoon.vue';
 import RegisterVefiry from '@/js/pages/register/verify.vue';
 import PasswordRemind from '@/js/pages/password/reset/index.vue';
 import PasswordReset from '@/js/pages/password/reset/form.vue';
@@ -59,10 +58,21 @@ const routes = [
   {
     path: '/password/reset/:token',
     component: PasswordReset,
-    name: 'password.remind',
+    name: 'password.reset',
     meta: {
       requireAuth: false,
       title: 'Password Reset',
+      header: 'menu',
+      actions: [],
+    },
+  },
+  {
+    path: '/error/slack',
+    component: SlackError,
+    name: 'error.slack',
+    meta: {
+      requireAuth: false,
+      title: 'Error',
       header: 'menu',
       actions: [],
     },
@@ -193,17 +203,17 @@ const routes = [
       actions: [],
     },
   },
-  {
-    path: '/notes/:id(\\d+)/users',
-    component: NoteUsers,
-    name: 'note.user',
-    meta: {
-      requireAuth: true,
-      title: 'Liked Users',
-      header: 'back',
-      actions: noteActions,
-    },
-  },
+  // {
+  //   path: '/notes/:id(\\d+)/users',
+  //   component: NoteUsers,
+  //   name: 'note.user',
+  //   meta: {
+  //     requireAuth: true,
+  //     title: 'Liked Users',
+  //     header: 'back',
+  //     actions: noteActions,
+  //   },
+  // },
   {
     path: '/notes/search',
     component: NoteSearch,
@@ -233,28 +243,6 @@ const routes = [
     meta: {
       requireAuth: true,
       title: 'Users',
-      header: 'menu',
-      actions: [],
-    },
-  },
-  {
-    path: '/attendances',
-    component: Attendances,
-    name: 'attendances',
-    meta: {
-      requireAuth: true,
-      title: 'Attendance',
-      header: 'menu',
-      actions: [],
-    },
-  },
-  {
-    path: '/countries',
-    component: ComingSoon,
-    name: 'countries',
-    meta: {
-      requireAuth: true,
-      title: 'Attendance',
       header: 'menu',
       actions: [],
     },

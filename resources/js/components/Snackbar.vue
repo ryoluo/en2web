@@ -5,7 +5,7 @@
     cols="8"
     bottom
     :color="type"
-    :timeout="0"
+    :timeout="-1"
   >
     {{ message }}
   </v-snackbar>

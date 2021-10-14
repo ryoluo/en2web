@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 
 class LoginController extends Controller
 {
@@ -17,7 +19,7 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jwt.auth', ['except' => ['login', 'refresh']]);
+        $this->middleware('auth:sanctum', ['except' => ['login', 'check']]);
     }
 
     public function login(Request $request)
@@ -29,23 +31,35 @@ class LoginController extends Controller
         }
 
         $credentials = request(['email', 'password']);
-        if (! $token = auth()->attempt($credentials)) {
+        if (Auth::attempt($credentials, request('remember'))) {
+            $request->session()->regenerate();
+            $this->clearLoginAttempts($request);
+            return response()->json(['message' => 'Successfully logged in.']);
+        } else {
             $this->incrementLoginAttempts($request);
 
             return response()->json(
-                ['error' => 'Unauthorized'], 
+                ['error' => 'Unauthorized'],
                 Response::HTTP_UNAUTHORIZED
             );
         }
-
-        $this->clearLoginAttempts($request);
-
-        return $this->respondWithToken($token);
     }
 
-    public function logout()
+    public function check()
     {
-        auth()->logout();
+        return new JsonResponse(['isLoggedIn' => Auth::check()]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return $this->loggedOut($request);
+    }
+
+    protected function loggedOut()
+    {
         return response()->json(['message' => 'Successfully logged out']);
     }
 
@@ -58,26 +72,12 @@ class LoginController extends Controller
         ]);
     }
 
-    public function refresh()
-    {
-        return $this->respondWithToken(auth()->refresh());
-    }
-
-    protected function respondWithToken($token)
-    {
-        $user = auth()->user();
-        return response()->json([
-            'access_token' => $token,
-            'expires_in' => auth()->factory()->getTTL() * 60,
-        ]);
-    }
-
     protected function sendLockoutResponse(Request $request)
     {
         $seconds = $this->limiter()->availableIn(
             $this->throttleKey($request)
         );
-        
+
         return response()->json([
             "error" => [Lang::get('auth.throttle', [
                 'seconds' => $seconds,
