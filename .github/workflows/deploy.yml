@@ -29,5 +29,6 @@ jobs:
                composer install && \
                php artisan config:cache && \
                php artisan migrate --force && \
-               npm install && \
-               npm run prod"
+               . ~/.nvm/nvm.sh && \
+               nvm exec 14.17.6 npm install && \
+               nvm exec 14.17.6 npm run generate"
