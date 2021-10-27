@@ -68,6 +68,7 @@ class OAuthController extends Controller
             return redirect('/error/slack');
         }
         Auth::login($user, true);
+        request()->session()->regenerate();
         return view('app');
     }
 

@@ -14,7 +14,7 @@
     <v-list-item-content>
       <v-list-item-title
         class="subtitle-1 font-weight-medium py-3"
-        style="font-size: 17px !important;"
+        style="font-size: 17px !important"
       >
         {{ user.name }}
       </v-list-item-title>

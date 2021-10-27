@@ -47,9 +47,7 @@
     <v-divider />
     <v-list-item class="mt-3" @click="logout">
       <v-list-item-action>
-        <v-icon>
-          mdi-logout-variant
-        </v-icon>
+        <v-icon> mdi-logout-variant </v-icon>
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>Logout</v-list-item-title>

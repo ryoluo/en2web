@@ -30,7 +30,15 @@
         </div>
       </div>
       <div
-        class="user-name headline white--text mt-4 d-flex justify-center align-center"
+        class="
+          user-name
+          headline
+          white--text
+          mt-4
+          d-flex
+          justify-center
+          align-center
+        "
       >
         <p class="mb-0">
           {{ user.name }}
@@ -57,12 +65,8 @@
     </div>
     <v-skeleton-loader v-else max-height="180px" type="image" />
     <v-tabs v-model="tab" color="indigo lighten-1" grow centered class="mb-2">
-      <v-tab>
-        Profile
-      </v-tab>
-      <v-tab>
-        Notes
-      </v-tab>
+      <v-tab> Profile </v-tab>
+      <v-tab> Notes </v-tab>
     </v-tabs>
     <div v-if="!loading" v-touch:swipe="handleSwipe" :style="tabContentStyle">
       <div v-if="tab === 0">
@@ -77,9 +81,7 @@
           </v-list-item>
           <v-list-item v-if="user.instagram_id || user.twitter_id" class="px-3">
             <v-list-item-icon>
-              <v-icon size="28" color="#559">
-                mdi-share-variant
-              </v-icon>
+              <v-icon size="28" color="#559"> mdi-share-variant </v-icon>
             </v-list-item-icon>
             <v-list-item-content>
               <div>

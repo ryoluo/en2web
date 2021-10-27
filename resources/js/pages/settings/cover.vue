@@ -38,7 +38,15 @@
               <v-img :src="userImagePath" />
             </v-avatar>
             <p
-              class="user-name text-center title font-weight-regular mt-2 white--text mb-0"
+              class="
+                user-name
+                text-center
+                title
+                font-weight-regular
+                mt-2
+                white--text
+                mb-0
+              "
             >
               {{ $store.state.auth.user.name }}
             </p>

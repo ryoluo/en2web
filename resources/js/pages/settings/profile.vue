@@ -7,7 +7,7 @@
     <div v-if="!loading" class="px-2 px-sm-4">
       <validation-observer ref="observer" v-slot="{ passes }">
         <div class="d-flex flex-wrap justify-space-between">
-          <div class="px-2 px-sm-4" style="width: 100%; max-width: 400px;">
+          <div class="px-2 px-sm-4" style="width: 100%; max-width: 400px">
             <v-text-field
               v-model="user.instagram_id"
               class="mb-2"

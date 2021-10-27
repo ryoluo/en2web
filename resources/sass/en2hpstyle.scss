@@ -122,15 +122,15 @@ body {
   display: flex;
   width: 100%;
   height: 590px;
-  background-image: url("/img/hp/landing_1.jpg");
+  background-image: url('/img/hp/landing_1.jpg');
   @include sp {
     height: 550px;
   }
 }
 .landing h1 {
   text-align: left;
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
-    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+  font-family: '游明朝', YuMincho, 'ヒラギノ明朝 ProN W3',
+    'Hiragino Mincho ProN', 'HG明朝E', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝', serif;
   font-weight: 100;
   line-height: 1.1;
   color: white;
@@ -177,19 +177,19 @@ index.html
   }
 }
 .main .about_us {
-  background-image: url("/img/hp/about_us.jpg");
+  background-image: url('/img/hp/about_us.jpg');
   background-position: bottom center;
 }
 .main .achievements {
-  background-image: url("/img/hp/achievements.jpg");
+  background-image: url('/img/hp/achievements.jpg');
   background-position: bottom center;
 }
 .main .activities {
-  background-image: url("/img/hp/activities.jpg");
+  background-image: url('/img/hp/activities.jpg');
   background-position: bottom center;
 }
 .main .andmore {
-  background-image: url("/img/hp/and_more.jpg");
+  background-image: url('/img/hp/and_more.jpg');
   background-position: bottom right;
 }
 .main h1 {
@@ -237,7 +237,7 @@ index.html
   }
 }
 .description h2::after {
-  content: "";
+  content: '';
   display: block;
   height: 3px;
   width: 100%;

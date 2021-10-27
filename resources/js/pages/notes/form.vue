@@ -6,7 +6,7 @@
   >
     <ValidationObserver v-if="!loading" ref="observer" v-slot="{ passes }">
       <div class="d-flex flex-wrap justify-space-between">
-        <div class="px-2 px-sm-4" style="width: 100%; max-width: 400px;">
+        <div class="px-2 px-sm-4" style="width: 100%; max-width: 400px">
           <ValidationProvider v-slot="{ errors }" name="Title" rules="required">
             <v-text-field
               v-model="note.title"
@@ -160,11 +160,11 @@
           </ValidationProvider>
         </div>
       </div>
-      <div v-if="previews.length > 0" class="mt-2 mb-8" style="width: 100%;">
+      <div v-if="previews.length > 0" class="mt-2 mb-8" style="width: 100%">
         <p class="body-2 mx-2 mb-3 mx-sm-4 grey--text text--darken-1">
           プレビュー（プレビューでは画像の向きが正しく表示されないことがあります。）
         </p>
-        <div class="d-flex mx-2 mx-sm-4" style="overflow-x: scroll;">
+        <div class="d-flex mx-2 mx-sm-4" style="overflow-x: scroll">
           <div v-for="(preview, i) in previews" :key="i">
             <v-img
               :src="preview"
@@ -176,13 +176,21 @@
           </div>
         </div>
       </div>
-      <div v-if="note.photos.length > 0" class="mb-6" style="width: 100%;">
+      <div v-if="note.photos.length > 0" class="mb-6" style="width: 100%">
         <p
-          class="body-2 mx-2 mt-0 mt-sm-4 mb-1 mx-sm-4 grey--text text--darken-1"
+          class="
+            body-2
+            mx-2
+            mt-0 mt-sm-4
+            mb-1
+            mx-sm-4
+            grey--text
+            text--darken-1
+          "
         >
           写真の削除
         </p>
-        <div class="d-flex mx-2 mx-sm-4" style="overflow-x: scroll;">
+        <div class="d-flex mx-2 mx-sm-4" style="overflow-x: scroll">
           <div v-for="photo in note.photos" :key="photo.id">
             <v-checkbox
               v-model="delete_photo_ids"

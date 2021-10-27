@@ -22,7 +22,12 @@
       </v-list-item-content>
     </v-list-item>
     <v-img
-      class="v-img white--text align-start align-content-space-between clickable"
+      class="
+        v-img
+        white--text
+        align-start align-content-space-between
+        clickable
+      "
       height="220px"
       :src="noteImagePath"
       @click="view"
@@ -37,9 +42,7 @@
           color="blue"
           @click="go(`/notes?category_id=${note.category_id}`)"
         >
-          <v-icon small left>
-            mdi-folder
-          </v-icon>
+          <v-icon small left> mdi-folder </v-icon>
           {{ note.category.name }}
         </v-chip>
         <v-chip
@@ -49,9 +52,7 @@
           color="green lighten-1"
           @click="go(`/notes?country_id=${note.countries[0].id}`)"
         >
-          <v-icon small left>
-            mdi-earth
-          </v-icon>
+          <v-icon small left> mdi-earth </v-icon>
           {{ note.countries[0].name }}
         </v-chip>
         <v-chip
@@ -61,22 +62,18 @@
           color="warning lighten-1"
           @click="go(`/notes?is_best=1`)"
         >
-          <v-icon small left>
-            mdi-star
-          </v-icon>
+          <v-icon small left> mdi-star </v-icon>
           Best Note
         </v-chip>
       </div>
       <div
         v-if="!hideFav"
         class="pb-2 pr-2"
-        style="position: absolute; bottom: 0; right: 0; opacity: 0.95;"
+        style="position: absolute; bottom: 0; right: 0; opacity: 0.95"
         @click="emitFav"
       >
         <v-btn fab :color="iconColor" :class="textColor">
-          <v-icon small>
-            mdi-heart
-          </v-icon>
+          <v-icon small> mdi-heart </v-icon>
           {{ note.fav_users_count }}
         </v-btn>
       </div>

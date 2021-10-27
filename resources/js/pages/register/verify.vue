@@ -4,7 +4,7 @@
       title="Register"
       :show-progress="submitting"
       class="mx-auto"
-      style="max-width: 500px;"
+      style="max-width: 500px"
     >
       <div class="px-2 px-sm-4">
         <ValidationObserver ref="observer" v-slot="{ passes }">

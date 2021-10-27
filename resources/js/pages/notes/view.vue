@@ -13,12 +13,10 @@
       </v-img>
       <div
         class="chip-group mt-3 pr-2 pb-4"
-        style="overflow: scroll; white-space: nowrap;"
+        style="overflow: scroll; white-space: nowrap"
       >
         <v-chip small class="white--text ml-2" color="indigo lighten-1">
-          <v-icon small left>
-            mdi-folder
-          </v-icon>
+          <v-icon small left> mdi-folder </v-icon>
           {{ note.category.name }}
         </v-chip>
         <v-chip
@@ -28,9 +26,7 @@
           class="white--text ml-2"
           color="green lighten-1"
         >
-          <v-icon small left>
-            mdi-map-marker
-          </v-icon>
+          <v-icon small left> mdi-map-marker </v-icon>
           {{ country.name }}
         </v-chip>
         <v-chip
@@ -40,9 +36,7 @@
           class="white--text ml-2"
           color="warning lighten-1"
         >
-          <v-icon small left>
-            mdi-star
-          </v-icon>
+          <v-icon small left> mdi-star </v-icon>
           Best Note
         </v-chip>
         <v-chip
@@ -52,9 +46,7 @@
           class="white--text ml-2"
           color="blue lighten-1"
         >
-          <v-icon small left>
-            mdi-tag
-          </v-icon>
+          <v-icon small left> mdi-tag </v-icon>
           {{ tag.name }}
         </v-chip>
       </div>
@@ -85,8 +77,16 @@
         </v-list-item-content>
       </v-list-item>
       <div
-        class="d-inline-block ml-4 mt-2 mb-0 font-weight-medium subtitle-2 blue-grey--text"
-        style="font-size: 18px; text-decoration: none;"
+        class="
+          d-inline-block
+          ml-4
+          mt-2
+          mb-0
+          font-weight-medium
+          subtitle-2
+          blue-grey--text
+        "
+        style="font-size: 18px; text-decoration: none"
         :to="`/notes/${$route.params.id}/users`"
       >
         {{ note.fav_users_count + ajustFavCount }} liked users
@@ -99,16 +99,12 @@
 
       <div class="d-flex mb-4 pr-10 mr-12 justify-end">
         <v-btn fab dark color="indigo lighten-1" @click="scrollTop">
-          <v-icon dark>
-            mdi-arrow-up
-          </v-icon>
+          <v-icon dark> mdi-arrow-up </v-icon>
         </v-btn>
       </div>
       <div class="float-btn-wrapper">
         <v-btn fab dark fixed :color="iconColor" bottom @click="fav">
-          <v-icon dark small>
-            mdi-heart
-          </v-icon>
+          <v-icon dark small> mdi-heart </v-icon>
           {{ note.fav_users_count + ajustFavCount }}
         </v-btn>
       </div>

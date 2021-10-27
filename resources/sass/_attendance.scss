@@ -71,13 +71,15 @@
           height: 32px;
         }
       }
-      .attend, .no-data {
+      .attend,
+      .no-data {
         color: #337;
       }
       .absent {
         color: #ccc;
       }
-      .late, .early {
+      .late,
+      .early {
         color: #779;
       }
       .overseas {

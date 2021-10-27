@@ -27,7 +27,7 @@
 }
 
 @mixin icon_deco_before {
-  content: "";
+  content: '';
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -38,7 +38,7 @@
 }
 
 @mixin icon_deco_after {
-  content: "";
+  content: '';
   width: 30px;
   height: 30px;
   display: inline-block;
@@ -58,8 +58,8 @@ body {
   margin: 0 auto;
   padding: 0;
   font-size: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic,
-    "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo,
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic,
+    'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', Meiryo,
     sans-serif;
 
   &.scroll-lock {
@@ -101,15 +101,15 @@ strong {
  *  Imports
  * 
  */
-@import "animation";
-@import "input";
-@import "header";
-@import "home";
-@import "footer";
-@import "calendar";
-@import "note";
-@import "attendance";
-@import "register";
+@import 'animation';
+@import 'input';
+@import 'header';
+@import 'home';
+@import 'footer';
+@import 'calendar';
+@import 'note';
+@import 'attendance';
+@import 'register';
 /*****************
  *               *
  *  button       *
@@ -278,7 +278,7 @@ strong {
       left: 0.15rem;
       width: 0.6rem;
       height: 0.6rem;
-      content: "";
+      content: '';
       transition: 0.2s;
       background-color: #fff;
       border-radius: 100%;
@@ -294,7 +294,7 @@ strong {
       left: -0.125rem;
       width: 1rem;
       height: 1rem;
-      content: "";
+      content: '';
       cursor: pointer;
       border: 1px solid #ccc;
       background: #ffffff;
@@ -334,7 +334,7 @@ strong {
       left: 0.02rem;
       width: 0.75rem;
       height: 0.375rem;
-      content: "";
+      content: '';
       -webkit-transition: -webkit-transform 0.4s
         cubic-bezier(0.45, 1.8, 0.5, 0.75);
       transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
@@ -357,7 +357,7 @@ strong {
       left: -0.1rem;
       width: 0.9rem;
       height: 0.9rem;
-      content: "";
+      content: '';
       cursor: pointer;
       border: 2px solid #777799;
       background: #ffffff;
@@ -564,7 +564,7 @@ strong {
         right: 0;
         bottom: 0;
         left: 0;
-        content: "";
+        content: '';
         border-top-left-radius: 1%;
         border-top-right-radius: 1%;
         transition: 0.3s;
@@ -594,7 +594,7 @@ strong {
           }
 
           &::before {
-            background-image: url("/img/note_category.png");
+            background-image: url('/img/note_category.png');
             background-size: cover;
             display: inline-block;
             vertical-align: top;
@@ -603,7 +603,7 @@ strong {
             margin: 2px;
             margin-right: 5px;
             margin-top: 4px;
-            content: "";
+            content: '';
 
             @include pc {
               height: 17px;
@@ -737,7 +737,7 @@ strong {
         }
 
         &:before {
-          content: "";
+          content: '';
           display: inline-block;
           width: 31px;
           height: 31px;
@@ -756,7 +756,7 @@ strong {
         }
 
         &:after {
-          content: "";
+          content: '';
           display: inline-block;
           width: 30px;
           height: 30px;
@@ -882,7 +882,7 @@ strong {
         right: 0;
         bottom: 0;
         left: 0;
-        content: "";
+        content: '';
         border-top-left-radius: 1%;
         border-top-right-radius: 1%;
         transition: 0.3s;
@@ -1486,7 +1486,7 @@ strong {
 
       &::before {
         display: block;
-        content: "";
+        content: '';
         height: 20px;
         width: 70px;
         position: absolute;
@@ -1506,7 +1506,7 @@ strong {
 
       &::after {
         display: block;
-        content: "";
+        content: '';
         height: 20px;
         width: 70px;
         position: absolute;
@@ -1556,7 +1556,7 @@ strong {
 
       &::before {
         display: block;
-        content: "";
+        content: '';
         height: 43px;
         width: 43px;
         position: absolute;
@@ -1580,7 +1580,7 @@ strong {
 
       &::after {
         display: block;
-        content: "";
+        content: '';
         height: 42px;
         width: 42px;
         position: absolute;
@@ -2197,7 +2197,7 @@ strong {
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 31px;
     height: 31px;
@@ -2217,7 +2217,7 @@ strong {
   }
 
   &:after {
-    content: "";
+    content: '';
     display: inline-block;
     width: 31px;
     height: 31px;
@@ -2429,7 +2429,7 @@ strong {
           left: 0;
           height: 100%;
           width: 100%;
-          content: "";
+          content: '';
 
           @include pc {
             border-radius: 1px;
@@ -2451,13 +2451,13 @@ strong {
 
         &::before {
           //background-color: #00aaca;
-          background-image: url("/img/note_category.png");
+          background-image: url('/img/note_category.png');
           background-size: cover;
           display: block;
           height: 18px;
           width: 18px;
           margin: 5px 6px 5px 5px;
-          content: "";
+          content: '';
           float: left;
         }
       }
@@ -2584,7 +2584,7 @@ strong {
         }
 
         &:before {
-          content: "";
+          content: '';
           display: inline-block;
           width: 41px;
           height: 41px;
@@ -2602,7 +2602,7 @@ strong {
         }
 
         &:after {
-          content: "";
+          content: '';
           display: inline-block;
           width: 42px;
           height: 42px;
@@ -2851,7 +2851,7 @@ strong {
     }
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       width: 82px;
       height: 82px;
@@ -2874,7 +2874,7 @@ strong {
     }
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       width: 83px;
       height: 83px;
@@ -3337,7 +3337,7 @@ form {
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
+    content: '';
   }
 
   .loading:after {
@@ -3345,7 +3345,7 @@ form {
     width: 75%;
     height: 75%;
     border-radius: 50%;
-    content: "";
+    content: '';
     margin: auto;
     position: absolute;
     top: 0;

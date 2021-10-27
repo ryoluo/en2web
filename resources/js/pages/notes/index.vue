@@ -6,30 +6,14 @@
       centered
       :hide-slider="!doesMatchTabUrl"
     >
-      <v-tab exact to="/notes">
-        ALL
-      </v-tab>
-      <v-tab exact to="/notes?is_best=1">
-        Best Note
-      </v-tab>
-      <v-tab exact to="/notes?category_id=6">
-        思考の共有
-      </v-tab>
-      <v-tab exact to="/notes?category_id=2">
-        語学学習
-      </v-tab>
-      <v-tab exact to="/notes?category_id=4">
-        就活・仕事
-      </v-tab>
-      <v-tab exact to="/notes?category_id=3">
-        奨学金
-      </v-tab>
-      <v-tab exact to="/notes?category_id=5">
-        本・記事
-      </v-tab>
-      <v-tab exact to="/notes?category_id=1">
-        月一報告
-      </v-tab>
+      <v-tab exact to="/notes"> ALL </v-tab>
+      <v-tab exact to="/notes?is_best=1"> Best Note </v-tab>
+      <v-tab exact to="/notes?category_id=6"> 思考の共有 </v-tab>
+      <v-tab exact to="/notes?category_id=2"> 語学学習 </v-tab>
+      <v-tab exact to="/notes?category_id=4"> 就活・仕事 </v-tab>
+      <v-tab exact to="/notes?category_id=3"> 奨学金 </v-tab>
+      <v-tab exact to="/notes?category_id=5"> 本・記事 </v-tab>
+      <v-tab exact to="/notes?category_id=1"> 月一報告 </v-tab>
     </v-tabs>
     <div class="d-flex justify-center">
       <v-card
@@ -43,15 +27,9 @@
         <v-list dense subheader nav width="100%">
           <v-subheader class="subtitle-2 pr-1 d-flex justify-space-between">
             <div class="d-flex">
-              <v-icon small class="mr-1">
-                mdi-filter
-              </v-icon>
-              <p class="mb-0" style="margin-top: 2px;">
-                Filter
-              </p>
-              <p class="mb-0 ml-3" style="margin-top: 2px;">
-                {{ total }} notes
-              </p>
+              <v-icon small class="mr-1"> mdi-filter </v-icon>
+              <p class="mb-0" style="margin-top: 2px">Filter</p>
+              <p class="mb-0 ml-3" style="margin-top: 2px">{{ total }} notes</p>
             </div>
             <div>
               <v-icon
