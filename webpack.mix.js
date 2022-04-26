@@ -33,6 +33,10 @@ mix.webpackConfig({
       '@': path.resolve(__dirname, 'resources'),
     },
   },
+  devServer: {
+    host: '0.0.0.0',
+    port: 8080,
+  },
 });
 
 mix.js('resources/js/main.js', 'public/js').vue();
