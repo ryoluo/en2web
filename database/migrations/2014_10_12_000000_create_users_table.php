@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->boolean('isOB')->default(false);
             $table->string('job')->nullable();
             $table->text('profile')->nullable();
-
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

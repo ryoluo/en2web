@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class TagsTableSeeder extends Seeder
@@ -35,7 +38,7 @@ class TagsTableSeeder extends Seeder
         //     DB::table('tags')->insert('tag');
         // }
         $now = \Carbon\Carbon::now();
-        
+
         for ($i = 0; $i < count($tags); $i++) {
             $tag = [
                 'name' => $tags[$i],

@@ -13,9 +13,9 @@ class AddSoftDeleteToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->softDeletes();
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->softDeletes();
+        // });
     }
 
     /**

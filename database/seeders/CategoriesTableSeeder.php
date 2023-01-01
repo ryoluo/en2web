@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
@@ -23,7 +26,7 @@ class CategoriesTableSeeder extends Seeder
         //     DB::table('tags')->insert('tag');
         // }
         $now = \Carbon\Carbon::now();
-        
+
         for ($i = 0; $i < count($categories); $i++) {
             $category = [
                 'name' => $categories[$i],
