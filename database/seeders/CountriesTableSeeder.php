@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class CountriesTableSeeder extends Seeder
@@ -69,7 +72,7 @@ class CountriesTableSeeder extends Seeder
 
 
         $now = \Carbon\Carbon::now();
-        
+
         for ($i = 0; $i < count($countries); $i++) {
             $country = [
                 'name' => $countries[$i],
