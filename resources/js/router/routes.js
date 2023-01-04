@@ -1,5 +1,6 @@
 import Login from '@/js/pages/login/index.vue';
 import SlackError from '@/js/pages/error/slack.vue';
+import DiscordError from '@/js/pages/error/discord.vue';
 import Notes from '@/js/pages/notes/index.vue';
 import NoteView from '@/js/pages/notes/view.vue';
 import NoteForm from '@/js/pages/notes/form.vue';
@@ -70,6 +71,17 @@ const routes = [
     path: '/error/slack',
     component: SlackError,
     name: 'error.slack',
+    meta: {
+      requireAuth: false,
+      title: 'Error',
+      header: 'menu',
+      actions: [],
+    },
+  },
+  {
+    path: '/error/discord',
+    component: DiscordError,
+    name: 'error.discord',
     meta: {
       requireAuth: false,
       title: 'Error',

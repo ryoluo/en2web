@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'discord' => [
+        'client_id' => env('DISCORD_CLIENT_ID'),
+        'client_secret' => env('DISCORD_CLIENT_SECRET'),
+        'redirect' => env('APP_ENV') === 'local'
+            ? 'https://dev.en2ynu.com/login/discord'
+            : 'https://en2ynu.com/login/discord',
+    ],
 ];

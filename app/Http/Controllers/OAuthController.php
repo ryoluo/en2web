@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use App\User;
 
 class OAuthController extends Controller
@@ -76,5 +77,22 @@ class OAuthController extends Controller
     {
         $id_token = explode('.', $id_token);
         return json_decode(base64_decode($id_token[1]));
+    }
+
+    public function redirectDiscord()
+    {
+        return Socialite::driver('discord')->redirect();
+    }
+
+    public function loginDiscord()
+    {
+        $discordUser = Socialite::driver('discord')->user();
+        $user = User::where('email', $discordUser->email)->first();
+        if (!$user) {
+            return redirect('/error/slack');
+        }
+        Auth::login($user, true);
+        request()->session()->regenerate();
+        return view('app');
     }
 }
