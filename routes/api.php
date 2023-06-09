@@ -16,3 +16,4 @@ use Illuminate\Http\Request;
 // Webhooks
 Route::post('/webhook/line', 'LineApiController@response');
 Route::post('/slack/command', 'SlackController@command');
+Route::post('/discord/command', 'DiscordController@command');
