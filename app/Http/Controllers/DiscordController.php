@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-
+use Elliptic\EdDSA;
 use App\User;
 
 class DiscordController extends Controller
@@ -44,11 +44,12 @@ class DiscordController extends Controller
 
     private function isVerified()
     {
-        $signature = request()->headers->get('X-Signature-Ed25519');
+        $ec = new EdDSA('ed25519');
+        $key = $ec->keyFromPublic(config('const.DISCORD_PUBLIC_KEY'));
         $timestamp = request()->headers->get('X-Signature-Timestamp');
         $message = $timestamp . request()->getContent();
-        $publicKey = config('const.DISCORD_PUBLIC_KEY');
-        return sodium_crypto_sign_verify_detached($signature, $message, $publicKey);
+        $signature = request()->headers->get('X-Signature-Ed25519');
+        return $key->verify($message, $signature);
     }
 
     private function iam($slack_id)
