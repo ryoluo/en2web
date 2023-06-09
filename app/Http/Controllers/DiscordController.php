@@ -47,7 +47,7 @@ class DiscordController extends Controller
         $ec = new EdDSA('ed25519');
         $key = $ec->keyFromPublic(config('const.DISCORD_PUBLIC_KEY'), 'hex');
         $timestamp = request()->headers->get('X-Signature-Timestamp');
-        $message = $timestamp . request()->getContent();
+        $message = array_merge(unpack('C*', $timestamp), unpack('C*', request()->getContent()));
         $signature = request()->headers->get('X-Signature-Ed25519');
         return $key->verify($message, $signature);
     }
