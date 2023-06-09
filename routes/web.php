@@ -12,6 +12,8 @@
 */
 Route::get('/redirect/slack', 'OAuthController@redirect');
 Route::get('/login/slack', 'OAuthController@login');
+Route::get('/redirect/discord', 'OAuthController@redirectDiscord');
+Route::get('/login/discord', 'OAuthController@loginDiscord');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('/login', 'Api\Auth\LoginController@login');

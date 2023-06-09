@@ -88,6 +88,13 @@
     <v-row>
       <v-col cols="10" class="mx-auto mt-4 pa-0" style="max-width: 400px">
         <div class="ma-auto" style="width: 256px">
+          <sign-in-with-discord-button link="/redirect/discord" />
+        </div>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="10" class="mx-auto mt-4 pa-0" style="max-width: 400px">
+        <div class="ma-auto" style="width: 256px">
           <sign-in-with-slack-button link="/redirect/slack" />
           <p class="mt-2 subtitle-1 text-center grey--text text--darken-1">
             Workspace: en2-ynu
@@ -101,11 +108,13 @@
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { mapState } from 'vuex';
 import SignInWithSlackButton from '@/js/components/SignInWithSlackButton';
+import SignInWithDiscordButton from '../../components/SignInWithDiscordButton.vue';
 export default {
   components: {
     ValidationObserver,
     ValidationProvider,
     SignInWithSlackButton,
+    SignInWithDiscordButton,
   },
   data: () => ({
     loading: false,
