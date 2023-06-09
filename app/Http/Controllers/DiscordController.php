@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Response;
 use Elliptic\EdDSA;
 use App\User;
+use Illuminate\Support\Facades\Log;
 
 class DiscordController extends Controller
 {
@@ -49,6 +50,9 @@ class DiscordController extends Controller
         $timestamp = request()->headers->get('X-Signature-Timestamp');
         $message = array_merge(unpack('C*', $timestamp), unpack('C*', request()->getContent()));
         $signature = request()->headers->get('X-Signature-Ed25519');
+        Log::info(request()->getContent());
+        Log::info($timestamp);
+        Log::info($signature);
         return $key->verify($message, $signature);
     }
 
