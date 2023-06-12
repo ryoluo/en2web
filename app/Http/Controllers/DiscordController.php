@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Response;
-use Elliptic\EdDSA;
 use App\User;
 use Illuminate\Support\Facades\Log;
+use Discord\Interaction;
+use Discord\InteractionResponseType;
 
 class DiscordController extends Controller
 {
@@ -16,44 +17,25 @@ class DiscordController extends Controller
 
     public function command()
     {
-        if (!$this->isVerified()) {
+        if ($this->isVerified()) {
+            return response()->json([
+                'type' => InteractionResponseType::PONG
+            ]);
+        } else {
             return response()->json(
                 ['error' => 'invalid request signature'],
                 Response::HTTP_UNAUTHORIZED
             );
         }
-        if (request('type') === 1) {
-            return response()->json(['type' => 1]);
-        }
-        // if ($this->validateRequest(request('token'))) {
-        //     $args = preg_split('/[[:blank:]]/', request('text'));
-        //     switch ($args[0]) {
-        //         case self::COMMAND_IAM:
-        //             return $this->iam(request('user_id'));
-        //         case self::COMMAND_REGISTER:
-        //             return $this->register(request('user_id'));
-        //         default:
-        //             return $this->help();
-        //     }
-        // } else {
-        //     return response()->json(
-        //         ['error' => 'token invalid'],
-        //         Response::HTTP_UNAUTHORIZED
-        //     );
-        // }
     }
 
     private function isVerified()
     {
-        $ec = new EdDSA('ed25519');
-        $key = $ec->keyFromPublic(config('const.DISCORD_PUBLIC_KEY'), 'hex');
-        $timestamp = request()->headers->get('X-Signature-Timestamp');
-        $message = array_merge(unpack('C*', $timestamp), unpack('C*', request()->getContent()));
+        $content = request()->getContent();
         $signature = request()->headers->get('X-Signature-Ed25519');
-        Log::info(request()->getContent());
-        Log::info($timestamp);
-        Log::info($signature);
-        return $key->verify($message, $signature);
+        $timestamp = request()->headers->get('X-Signature-Timestamp');
+        $key = config('const.DISCORD_PUBLIC_KEY');
+        return Interaction::verifyKey($content, $signature, $timestamp, $key);
     }
 
     private function iam($slack_id)
