@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use App\User;
 use Illuminate\Support\Facades\Log;
 use Discord\Interaction;
+use Discord\InteractionType;
 use Discord\InteractionResponseType;
 
 class DiscordController extends Controller
@@ -17,15 +18,26 @@ class DiscordController extends Controller
 
     public function command()
     {
-        if ($this->isVerified()) {
-            return response()->json([
-                'type' => InteractionResponseType::PONG
-            ]);
-        } else {
+        if (!$this->isVerified()) {
             return response()->json(
                 ['error' => 'invalid request signature'],
                 Response::HTTP_UNAUTHORIZED
             );
+        }
+        $type = request()->get('type');
+        switch ($type) {
+            case InteractionType::PING:
+                return response()->json([
+                    'type' => InteractionResponseType::PONG
+                ]);
+            case InteractionType::APPLICATION_COMMAND:
+                Log::info(request()->getContent());
+                return response();
+            default:
+                return response()->json(
+                    ['error' => 'unknown interaction type'],
+                    Response::HTTP_BAD_REQUEST
+                );
         }
     }
 
@@ -77,24 +89,5 @@ class DiscordController extends Controller
         return response()->json(
             ['text' => implode("\n", $texts)]
         );
-    }
-
-    public function response()
-    {
-        if ($this->verifyToken(request('token'))) {
-            switch (request('type')) {
-                case self::URL_VERIFICATION:
-                    return response()->json(
-                        ['challenge' => request('challenge')]
-                    );
-                default:
-                    return 'piyopiyo';
-            }
-        } else {
-            return response()->json(
-                ['error' => 'token invalid'],
-                Response::HTTP_UNAUTHORIZED
-            );
-        }
     }
 }
